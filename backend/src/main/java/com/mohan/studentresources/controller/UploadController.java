@@ -9,7 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/uploads")
-@CrossOrigin(origins = "http://localhost:3000")// allow frontend
 public class UploadController {
 
     @Autowired
@@ -28,7 +27,7 @@ public class UploadController {
                                    @RequestParam String year,
                                    @RequestParam(required = false) String uploaderName) throws Exception {
 
-        String fileUrl = storageService.storeFile(file);
+        String filename = storageService.storeFile(file);
 
         Material m = new Material();
         m.setTitle(title);
@@ -38,7 +37,7 @@ public class UploadController {
         m.setSemester(semester);
         m.setUploadYear(year);
         m.setUploaderName(uploaderName);
-        m.setFileUrl(fileUrl);
+        m.setFileUrl(filename); // Store only filename now
         m.setApproved(false); // default: pending
 
         return materialRepository.save(m);

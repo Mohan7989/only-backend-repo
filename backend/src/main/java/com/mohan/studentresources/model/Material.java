@@ -23,7 +23,7 @@ public class Material {
     private String uploadYear;
 
     private String uploaderName;
-    private String fileUrl; // path to file in static/uploads
+    private String fileUrl; // filename only for Railway
     private boolean approved = false; // admin approval
 	public Long getId() {
 		return id;
@@ -61,8 +61,6 @@ public class Material {
 	public void setSemester(String semester) {
 		this.semester = semester;
 	}
-	
-	
 	public String getUploadYear() {
 		return uploadYear;
 	}
@@ -87,6 +85,4 @@ public class Material {
 	public void setApproved(boolean approved) {
 		this.approved = approved;
 	}
-    
-    
 }
