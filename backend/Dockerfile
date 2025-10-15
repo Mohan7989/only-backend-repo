@@ -9,5 +9,9 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=build /app/target/student-resources-0.0.1-SNAPSHOT.jar app.jar
+
+# Create uploads directory
+RUN mkdir -p tmp/uploads
+
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
